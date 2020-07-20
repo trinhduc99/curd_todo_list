@@ -35,6 +35,7 @@
             
             $list= $data['list'];
             $stmt->execute();
+            header('location:index.php');
             }
             else{
                 
@@ -43,7 +44,7 @@
                 </script>";
             }
 
-              header('location:index.php');
+              
             }
             
 ?>

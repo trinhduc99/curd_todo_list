@@ -210,7 +210,7 @@
 
             <a href="update.php?id=<?= $res['id'];?>"><i class="fa fa-wrench" style="font-size:32px; float:right;"></i></a>
             <a href="delete.php?id=<?= $res['id']; ?>"><i class="material-icons" style="font-size:32px; float:right;" >delete</i></a>
-
+          
         </li>
   
     </ul>

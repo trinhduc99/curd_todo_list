@@ -31,6 +31,7 @@
                 //Gán giá trị và thực thi
                 $list= $data['list'];
                 $stmt->execute();
+                header('location:index.php');
             }
             else{
                
