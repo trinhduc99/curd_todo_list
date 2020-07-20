@@ -1,10 +1,8 @@
 <?php
 include "create.php";
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,13 +11,11 @@ include "create.php";
         * {
             box-sizing: border-box;
         }
-
         /* Remove margins and padding from the list */
         ul {
             margin: 0;
             padding: 0;
         }
-
         /* Style the list items */
         ul li {
             cursor: pointer;
@@ -28,31 +24,26 @@ include "create.php";
             background: #eee;
             font-size: 18px;
             transition: 0.2s;
-
             /* make the list items unselectable */
             -webkit-user-select: none;
             -moz-user-select: none;
             -ms-user-select: none;
             user-select: none;
         }
-
         /* Set all odd list items to a different color (zebra-stripes) */
         ul li:nth-child(odd) {
             background: #f9f9f9;
         }
-
         /* Darker background-color on hover */
         ul li:hover {
             background: #ddd;
         }
-
         /* When clicked on, add a background color and strike out text */
         ul li.checked {
             background: #888;
             color: #fff;
             text-decoration: line-through;
         }
-
         /* Add a "checked" mark when clicked on */
         ul li.checked::before {
             content: '';
@@ -66,7 +57,6 @@ include "create.php";
             height: 15px;
             width: 7px;
         }
-
         /* Style the close button */
         .close {
             position: absolute;
@@ -74,12 +64,10 @@ include "create.php";
             top: 0;
             padding: 12px 16px 12px 16px;
         }
-
         .close:hover {
             background-color: #f44336;
             color: white;
         }
-
         /* Style the header */
         .header {
             background-color: #f44336;
@@ -87,14 +75,12 @@ include "create.php";
             color: white;
             text-align: center;
         }
-
         /* Clear floats after the header */
         .header:after {
             content: "";
             display: table;
             clear: both;
         }
-
         /* Style the input */
         input {
             margin: 0;
@@ -105,7 +91,6 @@ include "create.php";
             float: left;
             font-size: 16px;
         }
-
         /* Style the "Add" button */
         .addBtn {
             padding: 10px;
@@ -133,36 +118,19 @@ include "create.php";
             background-color: dodgerblue;
             color: white;
         }
-
         .pagination a:hover {
             background-color: #ddd;
         }
         .pagination {
             text-aline: center;
         }
-
     </style>
     <script src='https://kit.fontawesome.com/a076d05399.js'></script>
     <script src="main.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!-- <script>
-    function validateForm()
-{
-    var list = document.getElementById('myInput').value;
-    if (list == ''){
-        alert('Bạn chưa nhap todolist');
-    }
-    else{
-        alert('Insert thành công');
-        return true;
-    }
- 
-    return false;
-}</script> -->
     <title>My Simple To Do List</title>
 </head>
-
 <body>
 <?php
 include "pation_page.php";
@@ -178,7 +146,6 @@ include "pation_page.php";
         <input type="submit" name="done" value="Add" class="addBtn">
     </form>
 </div>
-
 <ul id="myUL" style="">
     <?php
     include "config.php";
@@ -186,13 +153,10 @@ include "pation_page.php";
     $sql->execute();
     // $res = $sql->fetch(PDO::FETCH_ASSOC);
     // var_dump(is_int($res['id']));
-
     while ($res = $sql->fetch(PDO::FETCH_ASSOC)) {
         ?>
         <ul>
-
             <li>
-
                 <?php
                 if ($res['completeId'] == 0) {
                     ?>
@@ -207,31 +171,24 @@ include "pation_page.php";
                     <i style="text-decoration: line-through;"><?= $res["list"] ?></i>
                     <?php
                 } ?>
-
                 <a href="update.php?id=<?= $res['id']; ?>"><i class="fa fa-wrench"
                                                               style="font-size:32px; float:right;"></i></a>
                 <a href="delete.php?id=<?= $res['id']; ?>"><i class="material-icons"
                                                               style="font-size:32px; float:right;">delete</i></a>
-
             </li>
-
         </ul>
         <?php
     } ?>
 </ul>
-
 <div class="container">
     <nav aria-label="Page navigation example">
         <ul class="pagination col-lg-12">
             <?php
-
             // BƯỚC 7: HIỂN THỊ PHÂN TRANG
-
             // nếu current_page > 1 và total_page > 1 mới hiển thị nút prev
             if ($current_page > 1 && $total_page > 1) {
                 echo '<a href="index.php?page=' . ($current_page - 1) . '">&laquo;</a>  ';
             }
-
             // Lặp khoảng giữa
             for ($i = 1; $i <= $total_page; $i++) {
                 // Nếu là trang hiện tại thì hiển thị thẻ span
@@ -242,7 +199,6 @@ include "pation_page.php";
                     echo '<a href="index.php?page=' . $i . '">' . $i . '</a>  ';
                 }
             }
-
             // nếu current_page < $total_page và total_page > 1 mới hiển thị nút prev
             if ($current_page < $total_page && $total_page > 1) {
                 echo '<a href="index.php?page=' . ($current_page + 1) . '">&raquo;</a>  ';
